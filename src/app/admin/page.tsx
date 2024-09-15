@@ -13,13 +13,9 @@ export default function SongAdminPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [artistFilter, setArtistFilter] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
-  const [loading, setLoading] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const fetchSongs = useCallback(async () => {
-    if (loading) return;
-    setLoading(true);
-
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -40,10 +36,8 @@ export default function SongAdminPage() {
       setSongs(data);
     } catch (error) {
       console.error("Error fetching songs:", error);
-    } finally {
-      setLoading(false);
     }
-  }, [searchTerm, artistFilter, sortOrder, loading]);
+  }, [searchTerm, artistFilter, sortOrder]);
 
   useEffect(() => {
     fetchSongs();

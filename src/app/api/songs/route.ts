@@ -30,8 +30,5 @@ export async function GET(request: Request) {
     );
   }
 
-  // TODO: don't limit songs to first 100
-  songs = songs.slice(0, 100) as Song[];
-
   return NextResponse.json(songs);
 }

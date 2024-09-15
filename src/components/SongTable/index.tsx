@@ -5,6 +5,7 @@ import {
   GridColDef,
   GridSortModel,
   GridFilterModel,
+  getGridStringOperators,
 } from "@mui/x-data-grid";
 import { useState } from "react";
 import React from "react";
@@ -43,6 +44,9 @@ const columns: GridColDef[] = [
     sortable: false,
     filterable: true,
     disableColumnMenu: false,
+    filterOperators: getGridStringOperators().filter(
+      (operator) => operator.value === "contains"
+    ),
   },
   {
     field: "lengthMs",
@@ -123,11 +127,11 @@ export default function SongTable({
         columns={columns}
         disableRowSelectionOnClick
         getRowId={(row: Song) => `${row.title}-${row.album}-${row.artist}`}
-        filterModel={filterModel}
         onFilterModelChange={handleFilterModelChange}
-        sortModel={[{ field: "streamCount", sort: sortOrder }]}
         onSortModelChange={handleSortModelChange}
         disableColumnSelector
+        sortingMode="server"
+        filterMode="server"
       />
     </div>
   );
