@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import SongTable from "../../components/SongTable";
 import SearchBar from "../../components/SearchBar";
-import { Song } from "../../utils/types";
+import { Song, SortOrder } from "../../utils/types";
 import { Container, Typography } from "@mui/material";
 import { styled } from "styled-components";
 import React from "react";
@@ -12,7 +12,7 @@ export default function SongAdminPage() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [artistFilter, setArtistFilter] = useState("");
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>(null);
+  const [sortOrder, setSortOrder] = useState<SortOrder | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const fetchSongs = useCallback(async () => {
@@ -53,7 +53,6 @@ export default function SongAdminPage() {
       </HeaderContainer>
       <SongTable
         songs={songs}
-        sortOrder={sortOrder}
         onSortOrderChange={setSortOrder}
         onArtistFilterChange={setArtistFilter}
       />
