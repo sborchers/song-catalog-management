@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import data from "../../../data/songs.json";
-import { Song } from "../../../utils/types";
+import { Song, SortOrder } from "../../../utils/types";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
 
   if (sort) {
     songs = songs.sort((a, b) =>
-      sort === "asc"
+      sort === SortOrder.Ascending
         ? a.streamCount - b.streamCount
         : b.streamCount - a.streamCount
     );

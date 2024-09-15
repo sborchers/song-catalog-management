@@ -9,11 +9,11 @@ export interface Song {
 }
 
 export type Sort = {
-  field: SortField;
+  field: ColumnField;
   order: SortOrder;
 };
 
-export enum SortField {
+export enum ColumnField {
   Title = "Title",
   Album = "Album",
   Genre = "Genre",
@@ -24,6 +24,6 @@ export enum SortField {
 }
 
 export enum SortOrder {
-  Ascending = "Ascending",
-  Descending = "Descending",
+  Ascending = "asc",
+  Descending = "desc",
 }
