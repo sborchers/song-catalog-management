@@ -61,7 +61,6 @@ export default function SongAdminPage() {
         songs={songs}
         sortOrder={sortOrder}
         onSortOrderChange={setSortOrder}
-        artistFilter={artistFilter}
         onArtistFilterChange={setArtistFilter}
       />
     </Container>

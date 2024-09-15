@@ -77,7 +77,6 @@ interface SongTableProps {
   songs: Song[];
   sortOrder: "asc" | "desc" | null;
   onSortOrderChange: (value: "asc" | "desc" | null) => void;
-  artistFilter: string | null;
   onArtistFilterChange: (value: string) => void;
 }
 
@@ -85,7 +84,6 @@ export default function SongTable({
   songs,
   sortOrder,
   onSortOrderChange,
-  artistFilter,
   onArtistFilterChange,
 }: SongTableProps) {
   const [filterModel, setFilterModel] = useState<GridFilterModel>({
@@ -96,7 +94,8 @@ export default function SongTable({
     if (model.length > 0) {
       const { field, sort } = model[0];
       if (field === "streamCount") {
-        const sortDirection = sort === "asc" ? "asc" : "desc" ? "desc" : null;
+        const sortDirection =
+          sort === "asc" ? "asc" : sort === "desc" ? "desc" : null;
         onSortOrderChange(sortDirection);
       }
     } else {
