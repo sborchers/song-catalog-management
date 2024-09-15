@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import data from "../../../data/songs.json";
-import { Song } from "@/utils/types";
+import { Song } from "../../../utils/types";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);

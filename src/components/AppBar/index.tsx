@@ -1,6 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import Image from "next/image";
+// @ts-ignore
 import logo from "../../assets/logo.png";
 
 const AppBarComponent: React.FC = () => {

@@ -1,5 +1,5 @@
 import { Song } from "../../utils/types";
-import { formatDuration } from "@/utils/timeUtils";
+import { formatDuration } from "../../utils/timeUtils";
 import {
   DataGrid,
   GridColDef,
@@ -7,6 +7,7 @@ import {
   GridFilterModel,
 } from "@mui/x-data-grid";
 import { useState } from "react";
+import React from "react";
 
 const columns: GridColDef[] = [
   {
